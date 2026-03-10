@@ -12,9 +12,9 @@
     --surface2: #161b22;
     --border: #21262d;
     --green: #00ff88;
-    --green2: #00cc6a;
     --cyan: #00d4ff;
     --red: #ff4757;
+    --gold: #f5a623;
     --text: #e6edf3;
     --muted: #7d8590;
     --mono: 'Share Tech Mono', monospace;
@@ -25,135 +25,158 @@
   body { background: var(--bg); color: var(--text); font-family: var(--sans); overflow-x: hidden; }
   body::before {
     content: ''; position: fixed; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,136,0.015) 2px, rgba(0,255,136,0.015) 4px);
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,136,0.012) 2px, rgba(0,255,136,0.012) 4px);
     pointer-events: none; z-index: 9999;
   }
 
   /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(8,12,16,0.92); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
-  }
-  .nav-logo { font-family: var(--mono); color: var(--green); font-size: 1rem; letter-spacing: 2px; }
-  .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,12,16,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: var(--mono); color: var(--green); font-size: .95rem; letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .75rem; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
   .nav-links a:hover { color: var(--green); }
-  .nav-hire { font-family: var(--mono) !important; background: var(--green) !important; color: var(--bg) !important; padding: .38rem 1rem; border-radius: 4px; font-weight: 700 !important; }
+  .nav-hire { font-family: var(--mono) !important; background: var(--green) !important; color: var(--bg) !important; padding: .35rem 1rem; border-radius: 4px; font-weight: 700 !important; }
 
   /* HERO */
   .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 5% 0; position: relative; overflow: hidden; }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
-    background-size: 60px 60px; animation: gridMove 20s linear infinite;
-  }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,255,136,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.035) 1px, transparent 1px); background-size: 60px 60px; animation: gridMove 22s linear infinite; }
   @keyframes gridMove { 0%{transform:translateY(0)} 100%{transform:translateY(60px)} }
-  .hero::after {
-    content: ''; position: absolute; top: 20%; left: 55%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(0,255,136,0.07) 0%, transparent 70%); pointer-events: none;
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 660px; }
-  .hero-tag { font-family: var(--mono); color: var(--green); font-size: .75rem; letter-spacing: 3px; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .75rem; }
-  .hero-tag::before { content:''; display:inline-block; width:36px; height:1px; background:var(--green); }
-  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05; margin-bottom: 1.25rem; }
+  .hero::after { content: ''; position: absolute; top: 20%; left: 55%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,255,136,0.06) 0%, transparent 70%); pointer-events: none; }
+  .hero-content { position: relative; z-index: 1; max-width: 640px; }
+  .hero-tag { font-family: var(--mono); color: var(--green); font-size: .72rem; letter-spacing: 3px; margin-bottom: 1.2rem; display: flex; align-items: center; gap: .75rem; }
+  .hero-tag::before { content:''; display:inline-block; width:30px; height:1px; background:var(--green); }
+  .hero h1 { font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 900; line-height: 1.05; margin-bottom: 1.2rem; }
   .hero h1 span { color: var(--green); }
-  .hero-desc { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 1.75rem; max-width: 540px; }
-  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-  .hstat-num { font-size: 2rem; font-weight: 900; color: var(--green); line-height: 1; }
-  .hstat-label { font-family: var(--mono); font-size: .58rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-top: .2rem; }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
-  .btn { padding: .72rem 1.9rem; border-radius: 6px; font-family: var(--mono); font-size: .8rem; letter-spacing: 1px; text-decoration: none; transition: all .25s; display: inline-flex; align-items: center; gap: .5rem; }
+  .hero-desc { color: var(--muted); font-size: .93rem; line-height: 1.8; margin-bottom: 1.6rem; max-width: 520px; }
+  .hero-stats { display: flex; gap: 2.25rem; margin-bottom: 1.85rem; flex-wrap: wrap; }
+  .hstat-num { font-size: 1.9rem; font-weight: 900; color: var(--green); line-height: 1; }
+  .hstat-label { font-family: var(--mono); font-size: .57rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-top: .2rem; }
+  .hero-btns { display: flex; gap: .85rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+  .btn { padding: .7rem 1.75rem; border-radius: 6px; font-family: var(--mono); font-size: .75rem; letter-spacing: 1px; text-decoration: none; transition: all .25s; display: inline-flex; align-items: center; gap: .45rem; }
   .btn-primary { background: var(--green); color: var(--bg); border: 2px solid var(--green); font-weight: 700; }
-  .btn-primary:hover { background: transparent; color: var(--green); box-shadow: 0 0 20px rgba(0,255,136,.3); }
+  .btn-primary:hover { background: transparent; color: var(--green); box-shadow: 0 0 22px rgba(0,255,136,.3); }
   .btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border); }
   .btn-outline:hover { border-color: var(--green); color: var(--green); }
-  .hero-chips { display: flex; gap: .4rem; flex-wrap: wrap; }
-  .hchip { font-family: var(--mono); font-size: .63rem; padding: .22rem .68rem; border-radius: 3px; border: 1px solid rgba(0,255,136,.2); color: var(--green); background: rgba(0,255,136,.05); }
+  .hero-chips { display: flex; gap: .38rem; flex-wrap: wrap; }
+  .hchip { font-family: var(--mono); font-size: .61rem; padding: .2rem .65rem; border-radius: 3px; border: 1px solid rgba(0,255,136,.18); color: var(--green); background: rgba(0,255,136,.045); }
 
   /* Terminal */
-  .hero-terminal { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: min(420px, 40vw); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.6), 0 0 40px rgba(0,255,136,.05); display: none; }
+  .hero-terminal { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: min(400px, 38vw); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.65), 0 0 40px rgba(0,255,136,.04); display: none; }
   @media(min-width: 1024px){ .hero-terminal { display: block; } }
-  .terminal-bar { background: var(--surface2); padding: .72rem 1rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); }
-  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .terminal-bar { background: var(--surface2); padding: .65rem 1rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
   .dot-r{background:#ff5f57;} .dot-y{background:#febc2e;} .dot-g{background:#28c840;}
-  .terminal-title { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-left: auto; }
-  .terminal-body { padding: 1.2rem; font-family: var(--mono); font-size: .75rem; line-height: 1.85; }
-  .t-prompt{color:var(--green);} .t-cmd{color:var(--text);} .t-out{color:var(--muted);}
-  .t-ok{color:var(--green);} .t-red{color:var(--red);} .t-cyan{color:var(--cyan);}
-  .cursor { display:inline-block; width:8px; height:14px; background:var(--green); animation:blink 1s step-end infinite; vertical-align:middle; }
+  .terminal-title { font-family: var(--mono); font-size: .68rem; color: var(--muted); margin-left: auto; }
+  .terminal-body { padding: 1.1rem; font-family: var(--mono); font-size: .72rem; line-height: 1.9; }
+  .t-prompt{color:var(--green);} .t-out{color:var(--muted);} .t-ok{color:var(--green);} .t-red{color:var(--red);} .t-cyan{color:var(--cyan);}
+  .cursor { display:inline-block; width:7px; height:13px; background:var(--green); animation:blink 1s step-end infinite; vertical-align:middle; }
   @keyframes blink { 50%{opacity:0} }
 
   /* SECTIONS */
-  section { padding: 6rem 5%; }
+  section { padding: 5.5rem 5%; }
   .alt { background: var(--surface); }
-  .section-label { font-family: var(--mono); color: var(--green); font-size: .7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: .6rem; }
-  .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: .5rem; }
+  .section-label { font-family: var(--mono); color: var(--green); font-size: .68rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: .55rem; }
+  .section-title { font-size: clamp(1.7rem, 3.8vw, 2.5rem); font-weight: 800; margin-bottom: .45rem; }
   .section-title span { color: var(--green); }
-  .section-sub { color: var(--muted); font-size: .92rem; line-height: 1.72; max-width: 560px; margin-bottom: 2.75rem; }
+  .section-sub { color: var(--muted); font-size: .9rem; line-height: 1.75; max-width: 560px; margin-bottom: 2.5rem; }
+
+  /* TAGS */
+  .tag { font-family: var(--mono); font-size: .62rem; color: var(--green); background: rgba(0,255,136,.07); border: 1px solid rgba(0,255,136,.18); padding: .17rem .55rem; border-radius: 4px; }
+  .tag-cyan { color: var(--cyan); background: rgba(0,212,255,.07); border-color: rgba(0,212,255,.18); }
+  .tag-gold { color: var(--gold); background: rgba(245,166,35,.07); border-color: rgba(245,166,35,.22); }
+  .tag-red { color: var(--red); background: rgba(255,71,87,.07); border-color: rgba(255,71,87,.2); }
 
   /* EXPERIENCE */
-  .exp-card { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 10px; padding: 2rem; margin-bottom: 1.25rem; transition: transform .25s; }
-  .exp-card:hover { transform: translateX(4px); }
-  .exp-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .75rem; margin-bottom: 1rem; }
-  .exp-role { font-size: 1.05rem; font-weight: 700; margin-bottom: .25rem; }
-  .exp-company { font-family: var(--mono); font-size: .78rem; color: var(--green); }
-  .exp-period { font-family: var(--mono); font-size: .7rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: .28rem .7rem; border-radius: 4px; white-space: nowrap; }
+  .exp-card { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 10px; padding: 1.85rem; margin-bottom: 1.15rem; transition: transform .25s; }
+  .exp-card:hover { transform: translateX(5px); }
+  .exp-card.founding { border-left-color: var(--cyan); }
+  .exp-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .65rem; margin-bottom: .9rem; }
+  .exp-role { font-size: 1.02rem; font-weight: 700; margin-bottom: .22rem; }
+  .exp-company { font-family: var(--mono); font-size: .76rem; color: var(--green); }
+  .exp-company.cyan { color: var(--cyan); }
+  .exp-note { font-family: var(--mono); font-size: .62rem; color: var(--cyan); margin-top: .15rem; }
+  .exp-period { font-family: var(--mono); font-size: .68rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: .25rem .65rem; border-radius: 4px; white-space: nowrap; }
   .exp-bullets { list-style: none; }
-  .exp-bullets li { color: var(--muted); font-size: .87rem; line-height: 1.7; padding: .28rem 0; border-bottom: 1px solid rgba(33,38,45,.5); display: flex; gap: .75rem; }
+  .exp-bullets li { color: var(--muted); font-size: .85rem; line-height: 1.72; padding: .25rem 0; border-bottom: 1px solid rgba(33,38,45,.5); display: flex; gap: .7rem; }
   .exp-bullets li:last-child { border-bottom: none; }
-  .exp-bullets li::before { content: '▸'; color: var(--green); flex-shrink: 0; font-size: .7rem; margin-top: .28rem; }
-  .exp-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+  .exp-bullets li::before { content: '▸'; color: var(--green); flex-shrink: 0; font-size: .68rem; margin-top: .3rem; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: .38rem; margin-top: .9rem; }
 
   /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
-  .skill-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; transition: border-color .25s, transform .25s; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(235px, 1fr)); gap: 1.15rem; }
+  .skill-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; transition: border-color .25s, transform .25s; }
   .skill-card:hover { border-color: var(--green); transform: translateY(-4px); }
-  .skill-icon { font-size: 1.5rem; margin-bottom: .7rem; }
-  .skill-name { font-weight: 700; font-size: .95rem; margin-bottom: .4rem; }
-  .skill-desc { color: var(--muted); font-size: .82rem; line-height: 1.6; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
-  .tag { font-family: var(--mono); font-size: .63rem; color: var(--green); background: rgba(0,255,136,.08); border: 1px solid rgba(0,255,136,.2); padding: .18rem .58rem; border-radius: 4px; }
+  .skill-icon { font-size: 1.4rem; margin-bottom: .65rem; }
+  .skill-name { font-weight: 700; font-size: .92rem; margin-bottom: .35rem; }
+  .skill-desc { color: var(--muted); font-size: .8rem; line-height: 1.62; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: .38rem; margin-top: .7rem; }
 
   /* PROJECTS */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.25rem; }
-  .project-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.65rem; position: relative; overflow: hidden; transition: border-color .25s, transform .25s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.15rem; }
+  .project-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.55rem; position: relative; overflow: hidden; transition: border-color .25s, transform .25s; display: flex; flex-direction: column; }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--green), var(--cyan)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
   .project-card:hover::before { transform: scaleX(1); }
-  .project-card:hover { border-color: rgba(0,255,136,.3); transform: translateY(-4px); }
-  .project-num { font-family: var(--mono); font-size: .66rem; color: var(--muted); margin-bottom: .65rem; display: flex; justify-content: space-between; }
+  .project-card:hover { border-color: rgba(0,255,136,.28); transform: translateY(-4px); }
+  .project-num { font-family: var(--mono); font-size: .63rem; color: var(--muted); margin-bottom: .6rem; display: flex; justify-content: space-between; align-items: center; }
   .project-num span { color: var(--green); }
-  .project-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .6rem; }
-  .project-card p { color: var(--muted); font-size: .84rem; line-height: 1.65; flex: 1; }
-  .project-footer { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .project-langs { display: flex; gap: .35rem; flex-wrap: wrap; }
-  .project-link { font-family: var(--mono); font-size: .7rem; color: var(--green); display: flex; align-items: center; gap: .3rem; transition: gap .2s; }
-  .project-link:hover { gap: .6rem; }
+  .project-card h3 { font-size: .97rem; font-weight: 700; margin-bottom: .45rem; }
+  .proj-desc { color: var(--muted); font-size: .82rem; line-height: 1.65; margin-bottom: .7rem; }
+
+  /* WRITEUP BOX */
+  .proj-writeup { background: rgba(0,255,136,.032); border: 1px solid rgba(0,255,136,.1); border-radius: 7px; padding: .9rem 1rem; margin-bottom: .7rem; }
+  .proj-writeup-label { font-family: var(--mono); font-size: .58rem; color: var(--green); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .38rem; display: flex; align-items: center; gap: .4rem; }
+  .proj-writeup-label::before { content:''; display:inline-block; width:14px; height:1px; background:var(--green); }
+  .proj-writeup-text { font-size: .79rem; color: var(--muted); line-height: 1.7; }
+  .proj-writeup-text code { font-family: var(--mono); font-size: .72rem; color: var(--cyan); background: rgba(0,212,255,.07); padding: .08rem .28rem; border-radius: 3px; }
+
+  .project-footer { margin-top: auto; padding-top: .9rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .project-langs { display: flex; gap: .32rem; flex-wrap: wrap; }
+  .project-link { font-family: var(--mono); font-size: .68rem; color: var(--green); text-decoration: none; display: flex; align-items: center; gap: .3rem; transition: gap .2s; }
+  .project-link:hover { gap: .55rem; }
+
+  /* DISSERTATION */
+  .diss-card { background: var(--bg); border: 1px solid rgba(0,212,255,.25); border-radius: 12px; padding: 1.75rem; position: relative; overflow: hidden; margin-bottom: 1.15rem; }
+  .diss-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--cyan), var(--green)); }
+  .diss-badge { display: inline-flex; align-items: center; gap: .4rem; font-family: var(--mono); font-size: .63rem; padding: .25rem .75rem; border-radius: 20px; background: rgba(245,166,35,.09); border: 1px solid rgba(245,166,35,.28); color: var(--gold); margin-bottom: .65rem; }
+  .diss-title { font-size: 1rem; font-weight: 700; margin-bottom: .35rem; color: var(--cyan); }
+  .diss-uni { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-bottom: 1rem; }
+  .diss-desc { color: var(--muted); font-size: .84rem; line-height: 1.75; margin-bottom: 1.1rem; }
+  .diss-meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: .6rem; margin-bottom: 1.1rem; }
+  .diss-meta-item { background: rgba(0,212,255,.04); border: 1px solid rgba(0,212,255,.12); border-radius: 6px; padding: .6rem .85rem; }
+  .diss-meta-key { font-family: var(--mono); font-size: .57rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .2rem; }
+  .diss-meta-val { font-size: .79rem; font-weight: 600; color: var(--text); }
+  .diss-bullets { list-style: none; margin-bottom: 1rem; }
+  .diss-bullets li { color: var(--muted); font-size: .83rem; line-height: 1.72; padding: .25rem 0; border-bottom: 1px solid rgba(33,38,45,.4); display: flex; gap: .7rem; }
+  .diss-bullets li:last-child { border-bottom: none; }
+  .diss-bullets li::before { content: '▸'; color: var(--cyan); flex-shrink: 0; font-size: .68rem; margin-top: .3rem; }
+  .diss-conclusion { background: rgba(0,212,255,.03); border: 1px solid rgba(0,212,255,.1); border-radius: 6px; padding: .85rem 1rem; margin-bottom: 1rem; }
+  .diss-conclusion-label { font-family: var(--mono); font-size: .57rem; color: var(--cyan); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .35rem; }
+  .diss-conclusion p { color: var(--muted); font-size: .8rem; line-height: 1.7; }
+  .diss-tags { display: flex; flex-wrap: wrap; gap: .38rem; }
 
   /* EDUCATION */
-  .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem; }
-  .edu-card { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--cyan); border-radius: 10px; padding: 1.75rem; transition: transform .25s; }
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.15rem; }
+  .edu-card { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--cyan); border-radius: 10px; padding: 1.65rem; transition: transform .25s; }
   .edu-card:hover { transform: translateY(-3px); }
-  .edu-type { font-family: var(--mono); font-size: .6rem; color: var(--cyan); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .45rem; }
-  .edu-title { font-size: .98rem; font-weight: 700; margin-bottom: .3rem; }
-  .edu-inst { color: var(--muted); font-size: .82rem; margin-bottom: .75rem; }
-  .edu-badge { display: inline-flex; align-items: center; gap: .4rem; font-family: var(--mono); font-size: .66rem; padding: .28rem .82rem; border-radius: 20px; margin-bottom: .75rem; }
-  .badge-green { background: rgba(0,255,136,.1); border: 1px solid rgba(0,255,136,.3); color: var(--green); }
-  .badge-cyan { background: rgba(0,212,255,.08); border: 1px solid rgba(0,212,255,.25); color: var(--cyan); }
-  .badge-red { background: rgba(255,71,87,.08); border: 1px solid rgba(255,71,87,.25); color: var(--red); }
-  .edu-desc { color: var(--muted); font-size: .8rem; line-height: 1.62; }
+  .edu-type { font-family: var(--mono); font-size: .58rem; color: var(--cyan); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .4rem; }
+  .edu-title { font-size: .95rem; font-weight: 700; margin-bottom: .28rem; }
+  .edu-inst { color: var(--muted); font-size: .8rem; margin-bottom: .7rem; }
+  .edu-badge { display: inline-flex; align-items: center; gap: .35rem; font-family: var(--mono); font-size: .63rem; padding: .25rem .78rem; border-radius: 20px; margin-bottom: .7rem; }
+  .badge-green { background: rgba(0,255,136,.09); border: 1px solid rgba(0,255,136,.28); color: var(--green); }
+  .badge-cyan { background: rgba(0,212,255,.07); border: 1px solid rgba(0,212,255,.22); color: var(--cyan); }
+  .badge-red { background: rgba(255,71,87,.07); border: 1px solid rgba(255,71,87,.22); color: var(--red); }
+  .badge-gold { background: rgba(245,166,35,.07); border: 1px solid rgba(245,166,35,.22); color: var(--gold); }
+  .edu-desc { color: var(--muted); font-size: .78rem; line-height: 1.65; }
 
   /* CONTACT */
-  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-  .contact-link { display: flex; align-items: center; gap: .55rem; padding: .82rem 1.65rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); font-family: var(--mono); font-size: .78rem; transition: all .25s; background: var(--surface2); }
-  .contact-link:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 20px rgba(0,255,136,.1); }
+  .contact-links { display: flex; justify-content: center; gap: .85rem; flex-wrap: wrap; margin-top: 1.85rem; }
+  .contact-link { display: flex; align-items: center; gap: .5rem; padding: .78rem 1.55rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); font-family: var(--mono); font-size: .75rem; transition: all .25s; background: var(--surface2); }
+  .contact-link:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 18px rgba(0,255,136,.09); }
 
-  footer { text-align: center; padding: 1.75rem; border-top: 1px solid var(--border); font-family: var(--mono); font-size: .7rem; color: var(--muted); }
+  footer { text-align: center; padding: 1.6rem; border-top: 1px solid var(--border); font-family: var(--mono); font-size: .67rem; color: var(--muted); }
   footer span { color: var(--green); }
 
-  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+  .fade-up { opacity: 0; transform: translateY(26px); transition: opacity .65s ease, transform .65s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
@@ -165,6 +188,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#dissertation">Research</a></li>
     <li><a href="#cert">Education</a></li>
     <li><a href="#contact" class="nav-hire">Hire Me</a></li>
   </ul>
@@ -173,12 +197,11 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-tag">Ethical Hacker & Python Security Engineer</div>
+    <div class="hero-tag">Ethical Hacker &amp; Python Security Engineer</div>
     <h1>Breaking Systems<br>to <span>Secure Them.</span></h1>
     <p class="hero-desc">
-      MSc Cybersecurity — First Class (Hertfordshire, UK) · BTech Computer Science — First Class (KL University).
-      Professional VAPT experience at SECURE8 and Corizo. 20+ Python security tools built from scratch,
-      80+ vulnerabilities found, and SailPoint IIQ 8.4 deployed end-to-end.
+      MSc Cybersecurity — First Class Honours (Hertfordshire, UK) · BTech Computer Science — First Class (KL University).
+      VAPT experience at SECURE8 · 20+ Python security tools built from scratch · PKI &amp; digital certificate research — Outstanding grade dissertation.
     </p>
     <div class="hero-stats">
       <div><div class="hstat-num">20+</div><div class="hstat-label">Python Tools</div></div>
@@ -194,6 +217,7 @@
       <span class="hchip">Python</span><span class="hchip">Scapy</span>
       <span class="hchip">Burp Suite</span><span class="hchip">Metasploit</span>
       <span class="hchip">Kali Linux</span><span class="hchip">OWASP</span>
+      <span class="hchip">PKI</span><span class="hchip">OpenSSL</span>
       <span class="hchip">SailPoint IIQ</span><span class="hchip">Active Directory</span>
     </div>
   </div>
@@ -204,15 +228,14 @@
       <div class="terminal-title">kali@lab ~/tools</div>
     </div>
     <div class="terminal-body">
-      <div><span class="t-prompt">$ </span><span class="t-cmd">sudo python3 arp_spoof.py -t 192.168.1.5 -g 192.168.1.1</span></div>
+      <div><span class="t-prompt">$ </span>sudo python3 arp_spoof.py -t 192.168.1.5</div>
       <div class="t-out">[*] Starting ARP spoofing...</div>
       <div class="t-ok">[+] MITM position established</div>
       <div class="t-out">[*] Packets sent: 86</div><br>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">python3 packet_sniffer.py</span></div>
-      <div class="t-out">[HTTP GET] http://target.com/login</div>
-      <div class="t-red">[!] Credentials captured:</div>
-      <div class="t-red">&nbsp;&nbsp;user=admin&nbsp;pass=••••••••</div><br>
-      <div><span class="t-prompt">$ </span><span class="t-cmd">python3 vuln_scanner.py --all</span></div>
+      <div><span class="t-prompt">$ </span>openssl genrsa -aes256 -out root.key 4096</div>
+      <div class="t-ok">[+] Root CA private key — RSA 4096</div>
+      <div class="t-out">[*] Signing certificate chain...</div><br>
+      <div><span class="t-prompt">$ </span>python3 vuln_scanner.py --all</div>
       <div class="t-ok">[+] XSS found at /search?q=</div>
       <div class="t-ok">[+] SQLi found at /login</div><br>
       <div><span class="t-prompt">$ </span><span class="cursor"></span></div>
@@ -224,88 +247,127 @@
 <section id="experience" class="alt">
   <p class="section-label">// 01 experience</p>
   <h2 class="section-title">Work <span>Experience</span></h2>
-  <p class="section-sub">Real penetration tests and enterprise IAM deployments in a professional environment.</p>
+  <p class="section-sub">Real-world penetration testing, GRC framework building, IAM deployment, and enterprise security operations.</p>
+
+  <div class="exp-card founding fade-up">
+    <div class="exp-top">
+      <div>
+        <div class="exp-role">GRC Specialist | Founding Team Member</div>
+        <div class="exp-company cyan">EyrieQ — Early-Stage SaaS Startup</div>
+        <div class="exp-note">Founding Team Role · Pre-Revenue · Equity-Based</div>
+      </div>
+      <div class="exp-period">Oct 2025 – Present</div>
+    </div>
+    <ul class="exp-bullets">
+      <li>Built GRC framework from scratch — risk registers, security policies, and compliance controls aligned with NIST CSF and ISO 27001 for an LMS SaaS platform.</li>
+      <li>Conducted internal security audits, risk assessments, and gap analyses to identify and remediate operational and cyber risks.</li>
+      <li>Led R&amp;D into Post-Quantum Cryptography (PQC) — evaluated NIST PQC candidate algorithms for future cryptographic compliance roadmap.</li>
+      <li>Established secure SDLC processes and vendor risk assessment procedures from the ground up.</li>
+    </ul>
+    <div class="exp-tags">
+      <span class="tag tag-cyan">GRC</span><span class="tag tag-cyan">NIST CSF</span><span class="tag tag-cyan">ISO 27001</span>
+      <span class="tag tag-cyan">Risk Assessment</span><span class="tag tag-cyan">PQC</span><span class="tag tag-cyan">Audit</span>
+    </div>
+  </div>
 
   <div class="exp-card fade-up">
     <div class="exp-top">
       <div>
-        <div class="exp-role">Cyber Security Analyst — VAPT & IAM</div>
+        <div class="exp-role">Cyber Security Intern — VAPT &amp; IAM</div>
         <div class="exp-company">SECURE8 Technology Services</div>
       </div>
-      <div class="exp-period">Jun 2023 – Feb 2024 · 9 months</div>
+      <div class="exp-period">Feb 2025 – Oct 2025 · 9 months</div>
     </div>
     <ul class="exp-bullets">
-      <li>Conducted 10+ penetration tests across web applications, APIs, and internal networks</li>
-      <li>Developed 20+ offensive Python security tools using Scapy, Netfilterqueue, and Sockets — covering ARP/DNS spoofing, packet sniffing, reverse backdoors, keyloggers, and web scanners.</li>
-      <li>Produced CVSS-scored penetration testing reports with attack chains and remediation recommendations delivered to client teams.</li>
+      <li>Performed web application and API penetration tests identifying OWASP Top 10 vulnerabilities including XSS, SQLi, IDOR, CSRF, and Broken Authentication.</li>
+      <li>Used Burp Suite, OWASP ZAP, Nmap, and Metasploit for manual and automated VAPT; delivered CVSS-scored reports with remediation guidance to client teams.</li>
+      <li>Supported SailPoint IIQ 8.4 IAM operations — access reviews, RBAC analysis, and Active Directory user provisioning.</li>
+      <li>Developed 20+ offensive Python security tools using Scapy covering ARP/DNS spoofing, packet sniffers, reverse backdoors, keyloggers, and web scanners.</li>
     </ul>
     <div class="exp-tags">
-      <span class="tag">Python</span><span class="tag">Scapy</span><span class="tag">Kali Linux</span>
-      <span class="tag">Burp Suite</span><span class="tag">SailPoint IIQ</span><span class="tag">Active Directory</span>
-      <span class="tag">OWASP</span><span class="tag">VAPT</span><span class="tag">RBAC</span><span class="tag">JML</span>
+      <span class="tag">Burp Suite</span><span class="tag">Metasploit</span><span class="tag">OWASP</span>
+      <span class="tag">VAPT</span><span class="tag">Python</span><span class="tag">Scapy</span>
+      <span class="tag">SailPoint IIQ</span><span class="tag">Active Directory</span>
     </div>
   </div>
 
   <div class="exp-card fade-up">
     <div class="exp-top">
       <div>
-        <div class="exp-role">Penetration Tester — Intern</div>
-        <div class="exp-company">Corizo Edutech Private Limited</div>
+        <div class="exp-role">Technical Operations Associate</div>
+        <div class="exp-company">Cash Converters</div>
       </div>
-      <div class="exp-period">Apr 2022 – Jun 2022 · 3 months · India · Hybrid</div>
+      <div class="exp-period">Aug 2023 – Jan 2024 · London, UK</div>
     </div>
     <ul class="exp-bullets">
-      <li>Performed reconnaissance, exploitation, and post-exploitation activities on target systems as part of structured internship penetration testing programme.</li>
-      <li>Gained hands-on experience in vulnerability identification, network scanning, and applying ethical hacking techniques in a supervised hybrid environment.</li>
-      <li>Applied skills in Recon, Exploitation, and core penetration testing methodology across real-world-style assessment scenarios.</li>
+      <li>Inspected and tested electronic devices including MAC address verification prior to buyback — applied hardware-level technical skills in a compliance-driven environment.</li>
+      <li>Identified counterfeit and tampered devices to prevent fraud; maintained audit-ready operational records.</li>
     </ul>
     <div class="exp-tags">
-      <span class="tag">Recon</span><span class="tag">Exploitation</span><span class="tag">Penetration Testing</span><span class="tag">Kali Linux</span>
+      <span class="tag">Device Authentication</span><span class="tag">MAC Verification</span><span class="tag">Fraud Prevention</span>
     </div>
   </div>
+
+  <div class="exp-card fade-up">
+    <div class="exp-top">
+      <div>
+        <div class="exp-role">Cyber Security Intern</div>
+        <div class="exp-company">Praana Consulting</div>
+      </div>
+      <div class="exp-period">Jan 2023 – Jun 2023 · London, UK</div>
+    </div>
+    <ul class="exp-bullets">
+      <li>Assisted in penetration testing engagements and vulnerability assessments across client web applications and networks.</li>
+      <li>Supported security reporting and client-facing remediation recommendations.</li>
+    </ul>
+    <div class="exp-tags">
+      <span class="tag">Penetration Testing</span><span class="tag">Vulnerability Assessment</span><span class="tag">Reporting</span>
+    </div>
+  </div>
+
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
   <p class="section-label">// 02 expertise</p>
   <h2 class="section-title">Technical <span>Skills</span></h2>
-  <p class="section-sub">Every skill backed by a real tool built, test conducted, or system deployed.</p>
+  <p class="section-sub">Every skill backed by a real tool built, pentest conducted, or system deployed.</p>
   <div class="skills-grid">
     <div class="skill-card fade-up">
       <div class="skill-icon">🐍</div>
       <div class="skill-name">Python for Security</div>
-      <div class="skill-desc">20+ offensive tools built from scratch — raw sockets, packet crafting with Scapy, threading, OOP, JSON serialisation, and subprocess control.</div>
+      <div class="skill-desc">20+ offensive tools built from scratch — raw sockets, Scapy packet crafting, threading, OOP, JSON serialisation, subprocess control.</div>
       <div class="skill-tags"><span class="tag">Scapy</span><span class="tag">Sockets</span><span class="tag">Threading</span><span class="tag">OOP</span></div>
     </div>
     <div class="skill-card fade-up">
       <div class="skill-icon">🌐</div>
       <div class="skill-name">Network Pentesting</div>
-      <div class="skill-desc">ARP/DNS spoofing, MITM attacks, packet sniffing, code injection into HTTP streams, network mapping and host discovery across subnets.</div>
+      <div class="skill-desc">ARP/DNS spoofing, MITM attacks, packet sniffing, network mapping and host discovery. Hands-on Kali Linux two-VM lab.</div>
       <div class="skill-tags"><span class="tag">ARP</span><span class="tag">DNS</span><span class="tag">MITM</span><span class="tag">TCP/IP</span></div>
     </div>
     <div class="skill-card fade-up">
       <div class="skill-icon">🕸️</div>
       <div class="skill-name">Web App Pentesting</div>
-      <div class="skill-desc">Manual and automated testing for XSS, SQL Injection, IDOR, CSRF, authentication flaws and business logic vulnerabilities using OWASP methodology.</div>
+      <div class="skill-desc">Manual and automated testing for XSS, SQLi, IDOR, CSRF, auth flaws using OWASP methodology and Burp Suite Pro.</div>
       <div class="skill-tags"><span class="tag">XSS</span><span class="tag">SQLi</span><span class="tag">IDOR</span><span class="tag">Burp Suite</span></div>
     </div>
     <div class="skill-card fade-up">
-      <div class="skill-icon">🦠</div>
-      <div class="skill-name">Malware Development</div>
-      <div class="skill-desc">Built reverse backdoors with C2 listener, cross-platform keyloggers with email exfiltration, trojans, and payloads with AV evasion techniques.</div>
-      <div class="skill-tags"><span class="tag">Backdoor</span><span class="tag">C2</span><span class="tag">Keylogger</span><span class="tag">Evasion</span></div>
+      <div class="skill-icon">🔐</div>
+      <div class="skill-name">PKI &amp; Cryptography</div>
+      <div class="skill-desc">Built complete PKI — Root CA, Intermediate CA, server certs, full chain. OpenSSL vs Keytool comparative research. Outstanding-grade MSc dissertation.</div>
+      <div class="skill-tags"><span class="tag tag-cyan">OpenSSL</span><span class="tag tag-cyan">X.509</span><span class="tag tag-cyan">TLS/SSL</span><span class="tag tag-cyan">PKI</span></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-icon">🛡️</div>
+      <div class="skill-name">GRC &amp; Compliance</div>
+      <div class="skill-desc">Built GRC framework from scratch. Risk registers, audit trails, security policies. NIST CSF, ISO 27001, PQC R&amp;D. Founding team at EyrieQ.</div>
+      <div class="skill-tags"><span class="tag">NIST CSF</span><span class="tag">ISO 27001</span><span class="tag">GRC</span><span class="tag">PQC</span></div>
     </div>
     <div class="skill-card fade-up">
       <div class="skill-icon">🏛️</div>
       <div class="skill-name">SailPoint IAM</div>
-      <div class="skill-desc">Full IIQ 8.4 deployment — JDBC connectors, AD provisioning via IQService, RBAC role modelling, JML lifecycle automation, and identity correlation.</div>
+      <div class="skill-desc">Full IIQ 8.4 deployment — JDBC connectors, AD provisioning via IQService, RBAC role modelling, JML lifecycle automation.</div>
       <div class="skill-tags"><span class="tag">SailPoint IIQ</span><span class="tag">RBAC</span><span class="tag">AD</span><span class="tag">JML</span></div>
-    </div>
-    <div class="skill-card fade-up">
-      <div class="skill-icon">🐧</div>
-      <div class="skill-name">Linux & Infrastructure</div>
-      <div class="skill-desc">Kali Linux for offensive ops, Ubuntu for server deployments, iptables/Netfilterqueue, VMware lab setup, Windows Server 2022 and Active Directory DS.</div>
-      <div class="skill-tags"><span class="tag">Kali Linux</span><span class="tag">Ubuntu</span><span class="tag">VMware</span><span class="tag">iptables</span></div>
     </div>
   </div>
 </section>
@@ -314,133 +376,224 @@
 <section id="projects" class="alt">
   <p class="section-label">// 03 projects</p>
   <h2 class="section-title">Python Security <span>Tools</span></h2>
-  <p class="section-sub">Built and tested in a live Kali Linux lab. Written from scratch to understand attacks at the protocol level.</p>
+  <p class="section-sub">Built and tested in a live Kali Linux lab environment. Written from scratch to understand attacks at the protocol level — every tool includes a writeup of how I built and tested it.</p>
   <div class="projects-grid">
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/01_mac_changer" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">01 / NETWORK RECON <span>▸</span></div>
       <h3>🔄 MAC Changer</h3>
-      <p>Spoofs the MAC address of any network interface to a custom or randomly generated value. Validates format and restores cleanly after testing.</p>
+      <p class="proj-desc">Spoofs the MAC address of any network interface to a custom or randomly generated value. Validates format and restores cleanly after testing.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">I used Python's <code>subprocess</code> module to call <code>ifconfig</code> commands directly — first bringing the interface down, changing the MAC, then bringing it back up. Added <code>argparse</code> for clean CLI usage and <code>regex</code> to validate the MAC format before applying any change. Tested on my Kali Linux VM and confirmed the new address with <code>ifconfig</code> and a Wireshark capture.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">subprocess</span><span class="tag">argparse</span><span class="tag">regex</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/01_mac_changer" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/02_network_scanner" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">02 / NETWORK RECON <span>▸</span></div>
       <h3>📡 Network Scanner</h3>
-      <p>ARP-based host discovery across subnets. Sends broadcast ARP requests and maps all live devices with their IP and MAC addresses in a formatted table.</p>
+      <p class="proj-desc">ARP-based host discovery across subnets. Sends broadcast ARP requests and maps all live devices with their IP and MAC addresses in a clean table.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Built using <code>Scapy</code> — crafted ARP requests with <code>pdst</code> set to the subnet range, wrapped in an Ethernet frame with broadcast destination <code>ff:ff:ff:ff:ff:ff</code>. Used <code>srp()</code> to send and receive. Parsed the answered list to extract IP/MAC pairs and displayed them as a formatted table. Tested in a two-VM Kali/Windows 10 lab.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">scapy</span><span class="tag">ARP</span><span class="tag">Ethernet</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/02_network_scanner" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/03_arp_spoofer" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">03 / MITM ATTACK <span>▸</span></div>
       <h3>⚡ ARP Spoofer + Detector</h3>
-      <p>Poisons ARP caches of target and gateway to intercept all traffic. Auto-restores tables on exit. Companion detector alerts on active spoofing attempts on the network.</p>
+      <p class="proj-desc">Poisons ARP caches of both target and gateway to intercept all traffic. Auto-restores ARP tables on exit. Companion detector script alerts on active spoofing.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Sent crafted ARP replies using <code>scapy</code> — telling the target I'm the gateway and vice versa. Enabled IP forwarding via <code>/proc/sys/net/ipv4/ip_forward</code> so traffic still flows. Used Python's <code>signal</code> module to catch Ctrl+C and restore the real ARP tables on exit. The detector sniffs ARP packets and compares sender MACs against known real addresses to flag anomalies in real time.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">scapy</span><span class="tag">ARP poisoning</span><span class="tag">MITM</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/03_arp_spoofer" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/04_packet_sniffer" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">04 / CREDENTIAL THEFT <span>▸</span></div>
       <h3>🔍 Packet Sniffer</h3>
-      <p>Captures live HTTP traffic and extracts URLs and login credentials from POST request bodies. Detects 14 common credential field names. Best used after ARP spoofing.</p>
+      <p class="proj-desc">Captures live HTTP traffic and extracts URLs and login credentials from POST request bodies. Detects 14 common credential field names.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Used <code>scapy</code>'s <code>sniff()</code> with a TCP port 80 filter. Extracted the <code>Raw</code> layer payload and decoded it as UTF-8. Parsed HTTP POST bodies by splitting on <code>&amp;</code> and searching for keywords like <code>username</code>, <code>password</code>, and <code>email</code>. Also pulled visited URLs from GET request Host headers. Works best after ARP spoofing to intercept victim traffic on the same LAN.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">scapy</span><span class="tag">HTTP layer</span><span class="tag">Raw</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/04_packet_sniffer" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/05_dns_spoofer" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">05 / MITM ATTACK <span>▸</span></div>
       <h3>🔀 DNS Spoofer</h3>
-      <p>Intercepts DNS queries via Netfilterqueue and injects forged responses to redirect victims to an attacker-controlled IP. Integrates with iptables FORWARD rules.</p>
+      <p class="proj-desc">Intercepts DNS queries via Netfilterqueue and injects forged responses to redirect victims to an attacker-controlled IP. Integrates with iptables FORWARD rules.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Set an <code>iptables</code> FORWARD rule to redirect all DNS UDP packets to a Netfilter queue. Used <code>netfilterqueue</code> to intercept each packet, then <code>scapy</code> to check if it was a DNS query for the target domain. If yes, modified the DNS response to point to my IP, deleted the old checksum so Scapy recalculates it, then accepted the modified packet. The victim's browser then loaded my page instead of the real one.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">netfilterqueue</span><span class="tag">scapy</span><span class="tag">DNS</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/05_dns_spoofer" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/06_reverse_backdoor" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">06 / MALWARE / C2 <span>▸</span></div>
       <h3>🚪 Reverse Backdoor</h3>
-      <p>Two-part C2 tool — backdoor on target connects back to attacker's listener. Supports remote shell, file upload/download, directory navigation, and auto-reconnect.</p>
+      <p class="proj-desc">Two-part C2 tool — the backdoor on the target connects back to my listener. Supports remote shell, file upload/download, directory navigation, and auto-reconnect.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Built two scripts — a listener on my machine and a backdoor for the target. The backdoor uses Python's <code>socket</code> to initiate the connection back to me (reverse connection bypasses firewalls). Commands are exchanged as <code>JSON</code>-encoded strings; output is captured via <code>subprocess</code>. Files are transferred as <code>base64</code>-encoded chunks. An auto-reconnect loop handles dropped connections. The listener manages the full C2 session interactively.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">socket</span><span class="tag">subprocess</span><span class="tag">JSON</span><span class="tag">base64</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/06_reverse_backdoor" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/07_keylogger" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">07 / MALWARE <span>▸</span></div>
       <h3>⌨️ Remote Keylogger</h3>
-      <p>Captures all keystrokes (including special keys) and emails the log at configurable intervals. Threaded — runs silently. Falls back to local file if email fails.</p>
+      <p class="proj-desc">Captures all keystrokes including special keys and emails the log at configurable intervals. Threaded — runs silently in the background. Falls back to local file if email fails.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Used <code>pynput</code>'s keyboard listener to capture every keypress, including Backspace, Enter, and Tab. Stored them in a string buffer. A separate <code>threading.Timer</code> fires every N seconds to email the log via <code>smtplib</code> over Gmail SMTP. If email fails, it writes to a local file as backup. The listener runs as a background daemon thread — no visible console window at all.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">pynput</span><span class="tag">smtplib</span><span class="tag">threading</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/07_keylogger" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/08_vuln_scanner" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">08 / WEB HACKING <span>▸</span></div>
       <h3>🕷️ Vulnerability Scanner</h3>
-      <p>Automated web scanner testing for XSS (6 payloads), SQL Injection (6 payloads + SQL error detection), and directory enumeration across 20+ common paths.</p>
-      <div class="project-footer">
-        <div class="project-langs"><span class="tag">requests</span><span class="tag">BeautifulSoup</span><span class="tag">XSS</span><span class="tag">SQLi</span></div>
-        <span class="project-link">GitHub →</span>
+      <p class="proj-desc">Automated web scanner testing for XSS (6 payloads), SQL Injection (6 payloads + SQL error detection), and directory enumeration across 20+ common paths.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Used <code>requests</code> and <code>BeautifulSoup</code> to crawl the target and find all forms and input fields. For XSS — injected payloads like <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> into each field and checked if they reflected unescaped in the response. For SQLi — used payloads like <code>' OR 1=1--</code> and detected SQL error strings in the response body. Directory enumeration sent GET requests to a wordlist of common paths and logged any HTTP 200 or 403 responses.</div>
       </div>
-    </a>
+      <div class="project-footer">
+        <div class="project-langs"><span class="tag">requests</span><span class="tag">BeautifulSoup</span><span class="tag">XSS · SQLi</span></div>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/08_vuln_scanner" class="project-link" target="_blank">GitHub →</a>
+      </div>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/09_website_spider" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">09 / WEB RECON <span>▸</span></div>
       <h3>🗺️ Website Spider</h3>
-      <p>Recursively crawls a site mapping all internal links, forms, emails, and JS files up to configurable depth. Includes multi-threaded subdomain enumerator for 35+ subdomains.</p>
+      <p class="proj-desc">Recursively crawls a site mapping all internal links, forms, emails, and JS files. Includes a multi-threaded subdomain enumerator testing 35+ subdomains concurrently.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Used <code>requests</code> to fetch pages and <code>BeautifulSoup</code> to parse all <code>href</code> tags, forms, and script sources. Maintained a visited set to prevent loops and a queue for BFS crawling. Extracted emails using <code>regex</code>. The subdomain enumerator loaded a wordlist into a <code>threading.Queue</code> and spawned multiple worker threads — each requesting <code>subdomain.target.com</code> and recording any HTTP 200 or redirect response.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">requests</span><span class="tag">BeautifulSoup</span><span class="tag">threading</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/09_website_spider" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card fade-up" href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/10_login_bruteforcer" target="_blank">
+    <div class="project-card fade-up">
       <div class="project-num">10 / WEB HACKING <span>▸</span></div>
       <h3>🔑 Login Brute Forcer</h3>
-      <p>Multi-threaded HTTP form brute force tool. Auto-extracts CSRF tokens, supports custom field names, configurable thread count — compatible with rockyou.txt wordlists.</p>
+      <p class="proj-desc">Multi-threaded HTTP form brute force. Auto-extracts CSRF tokens, supports custom field names, configurable thread count — compatible with rockyou.txt wordlists.</p>
+      <div class="proj-writeup">
+        <div class="proj-writeup-label">How I Built It</div>
+        <div class="proj-writeup-text">Used <code>requests.Session()</code> to maintain cookies and CSRF tokens across requests. First fetched the login page and parsed the CSRF hidden input with <code>BeautifulSoup</code>. Loaded the wordlist into a <code>threading.Queue</code> and spawned N worker threads — each taking a password, submitting the form, and checking the response for a failure indicator string. Custom success/failure detection strings can be passed via CLI. Tested on DVWA and a personal Flask app.</div>
+      </div>
       <div class="project-footer">
         <div class="project-langs"><span class="tag">requests</span><span class="tag">threading</span><span class="tag">Queue</span></div>
-        <span class="project-link">GitHub →</span>
+        <a href="https://github.com/gbvsp/EthicalHacking-Practical/tree/main/10_login_bruteforcer" class="project-link" target="_blank">GitHub →</a>
       </div>
-    </a>
+    </div>
 
   </div>
 </section>
 
+<!-- DISSERTATION -->
+<section id="dissertation">
+  <p class="section-label">// 04 research</p>
+  <h2 class="section-title">MSc <span>Dissertation</span></h2>
+  <p class="section-sub">Outstanding-grade MSc research — built a complete PKI infrastructure from scratch and conducted a detailed comparative analysis of digital certificate tools.</p>
+
+  <div class="diss-card fade-up">
+    <div class="diss-badge">★ Outstanding Grade</div>
+    <div class="diss-title">Evaluating and Comparing Digital Certificates by Implementing them in a Virtual Environment</div>
+    <div class="diss-uni">University of Hertfordshire · MSc Cybersecurity · Module: 7COM1070</div>
+
+    <p class="diss-desc">Digital certificates are the backbone of web security — authenticating servers, encrypting communications, and preventing identity fraud. This research evaluated two leading certificate management tools by building a real multi-layer PKI from scratch, deploying it on a live Apache web server, then comparing both tools across 12 technical dimensions.</p>
+
+    <div class="diss-meta-grid">
+      <div class="diss-meta-item"><div class="diss-meta-key">Tools Compared</div><div class="diss-meta-val">OpenSSL vs Java Keytool</div></div>
+      <div class="diss-meta-item"><div class="diss-meta-key">Key Algorithm</div><div class="diss-meta-val">RSA 4096-bit</div></div>
+      <div class="diss-meta-item"><div class="diss-meta-key">Signing Algorithm</div><div class="diss-meta-val">SHA-512</div></div>
+      <div class="diss-meta-item"><div class="diss-meta-key">Chain</div><div class="diss-meta-val">Root → Intermediate → Server</div></div>
+      <div class="diss-meta-item"><div class="diss-meta-key">Deployment</div><div class="diss-meta-val">Apache · localhost HTTPS</div></div>
+      <div class="diss-meta-item"><div class="diss-meta-key">Platform</div><div class="diss-meta-val">Kali Linux VM</div></div>
+    </div>
+
+    <ul class="diss-bullets">
+      <li>Created a <strong>Root Certificate Authority (CA)</strong> using OpenSSL with RSA 4096-bit keys — the trust anchor for the entire certificate chain.</li>
+      <li>Created an <strong>Intermediate CA</strong> signed by the Root — following real-world PKI best practice of never using the Root CA to sign end-entity certificates directly.</li>
+      <li>Generated <strong>server certificates</strong>, built a complete certificate chain, and deployed HTTPS on Apache. Imported the Root CA into browser trusted stores — verified in Firefox and Edge.</li>
+      <li>Repeated the full implementation with <strong>Java Keytool</strong> and compared both tools across algorithms, file formats (PEM vs PKCS12), SAN extension support, known vulnerabilities, and enterprise use cases.</li>
+    </ul>
+
+    <div class="diss-conclusion">
+      <div class="diss-conclusion-label">// Conclusion</div>
+      <p>OpenSSL is superior for full cryptographic operations, scripting, and configuration flexibility — the right choice for enterprise PKI. Java Keytool excels at managing certificate stores within Java ecosystems. Both tools successfully secured HTTPS communications in the test environment, but OpenSSL offers far more control, automation potential, and library support.</p>
+    </div>
+
+    <div class="diss-tags">
+      <span class="tag tag-cyan">PKI</span><span class="tag tag-cyan">X.509</span><span class="tag tag-cyan">TLS/SSL</span>
+      <span class="tag tag-cyan">OpenSSL</span><span class="tag tag-cyan">Java Keytool</span><span class="tag tag-cyan">RSA 4096</span>
+      <span class="tag tag-cyan">SHA-512</span><span class="tag tag-cyan">Apache</span><span class="tag tag-cyan">Root CA</span>
+      <span class="tag tag-cyan">Intermediate CA</span><span class="tag tag-cyan">Certificate Lifecycle</span>
+    </div>
+  </div>
+</section>
+
 <!-- EDUCATION -->
-<section id="cert">
-  <p class="section-label">// 04 education & certifications</p>
-  <h2 class="section-title">Education & <span>Certifications</span></h2>
+<section id="cert" class="alt">
+  <p class="section-label">// 05 education &amp; certifications</p>
+  <h2 class="section-title">Education &amp; <span>Certifications</span></h2>
   <p class="section-sub">Academic credentials backed by hands-on practical certifications and real lab work.</p>
   <div class="edu-grid">
 
     <div class="edu-card fade-up">
       <div class="edu-type">MSc Degree</div>
       <div class="edu-title">MSc Cybersecurity with Advanced Research</div>
-      <div class="edu-inst">University of Hertfordshire, UK · Jan 2020 – Mar 2022</div>
-      <span class="edu-badge badge-green">✓ First Class</span>
-      <div class="edu-desc">Advanced research in cybersecurity. Modules: Penetration Testing, Network Security, Ethical Hacking, Cryptography, Incident Response, and Risk Management.</div>
+      <div class="edu-inst">University of Hertfordshire, UK · 2020 – 2023</div>
+      <span class="edu-badge badge-green">✓ First Class Honours</span>
+      <div class="edu-desc">Dissertation: <em>Evaluating &amp; Comparing Digital Certificates</em> — <strong>Outstanding Grade</strong>. Modules: Penetration Testing, Network Security, Cryptography, Incident Response, Risk Management.</div>
     </div>
 
     <div class="edu-card fade-up">
       <div class="edu-type">BTech Degree</div>
-      <div class="edu-title">BTech Electronics & Computer Science</div>
+      <div class="edu-title">BTech Electronics &amp; Computer Science</div>
       <div class="edu-inst">KL University · 2015 – 2019</div>
       <span class="edu-badge badge-cyan">✓ First Class</span>
-      <div class="edu-desc">Specialisation: Internet of Things (IoT). Foundation in electronics, computer science, embedded systems, and network fundamentals.</div>
+      <div class="edu-desc">Specialisation: Internet of Things (IoT). Publication: Design of IoT-Based Coal Mine Safety System Using NodeMCU.</div>
+    </div>
+
+    <div class="edu-card fade-up">
+      <div class="edu-type">EC-Council · Upcoming</div>
+      <div class="edu-title">CEH — Certified Ethical Hacker</div>
+      <div class="edu-inst">Exam Scheduled Next Month</div>
+      <span class="edu-badge badge-gold">⏳ Appearing Soon</span>
+      <div class="edu-desc">Preparing for CEH — covering ethical hacking methodology, attack phases, tools, and countermeasures aligned with EC-Council curriculum.</div>
     </div>
 
     <div class="edu-card fade-up">
@@ -448,7 +601,7 @@
       <div class="edu-title">Jr Penetration Tester Certificate</div>
       <div class="edu-inst">Credential ID: THM-BLPD2BYXNL</div>
       <span class="edu-badge badge-red">✓ Certified</span>
-      <div class="edu-desc">Hands-on path covering network/web app exploitation, privilege escalation, Active Directory attacks, Burp Suite, and scripting. Pursuing eJPT/OSCP next.</div>
+      <div class="edu-desc">Network and web app exploitation, privilege escalation, Active Directory attacks, Burp Suite, and scripting for offensive security.</div>
     </div>
 
     <div class="edu-card fade-up">
@@ -456,15 +609,7 @@
       <div class="edu-title">Web Fundamentals Certificate</div>
       <div class="edu-inst">Credential ID: THM-NFZISZ6LSO</div>
       <span class="edu-badge badge-red">✓ Certified</span>
-      <div class="edu-desc">Web application security pathway covering OWASP Top 10, major vulnerabilities, industry-used tools, and web application assessment methodology.</div>
-    </div>
-
-    <div class="edu-card fade-up">
-      <div class="edu-type">TryHackMe · Feb 2024</div>
-      <div class="edu-title">Introduction to Cyber Security</div>
-      <div class="edu-inst">Credential ID: THM-HYD61KNPYW</div>
-      <span class="edu-badge badge-red">✓ Certified</span>
-      <div class="edu-desc">Core cybersecurity concepts, offensive and defensive fundamentals, and introduction to ethical hacking methodology and tools.</div>
+      <div class="edu-desc">Web application security pathway — OWASP Top 10, major vulnerability classes, and web application assessment methodology.</div>
     </div>
 
     <div class="edu-card fade-up">
@@ -472,30 +617,30 @@
       <div class="edu-title">Pre-Security Learning Path</div>
       <div class="edu-inst">Credential ID: THM-4ZULGMZ1MZ</div>
       <span class="edu-badge badge-red">✓ Certified</span>
-      <div class="edu-desc">Foundations in Linux, Networking, HTTP, Firewalls, Nmap, Metasploit, Operating Systems, and Penetration Testing essentials.</div>
+      <div class="edu-desc">Linux, Networking, HTTP, Firewalls, Nmap, Metasploit, and Penetration Testing fundamentals.</div>
     </div>
 
     <div class="edu-card fade-up">
-      <div class="edu-type">Udemy · May 2024</div>
-      <div class="edu-title">Python & Ethical Hacking — From Scratch</div>
-      <div class="edu-inst">zSecurity / Zaid Sabih · 25 Hours</div>
+      <div class="edu-type">IBM / Coursera</div>
+      <div class="edu-title">Intro to Cybersecurity Tools &amp; Cyber Attacks</div>
+      <div class="edu-inst">IBM · Coursera</div>
       <span class="edu-badge badge-cyan">✓ Completed</span>
-      <div class="edu-desc">Built 20+ offensive security tools covering network hacking, MITM attacks, malware development, and web exploitation in a live Kali Linux lab.</div>
+      <div class="edu-desc">Core cybersecurity concepts, offensive and defensive fundamentals, and introduction to ethical hacking methodology and tools.</div>
     </div>
 
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="alt" style="text-align:center">
-  <p class="section-label">// 05 contact</p>
+<section id="contact" style="text-align:center;padding:5.5rem 5%;">
+  <p class="section-label" style="text-align:center;">// 06 contact</p>
   <h2 class="section-title">Open to <span>Opportunities</span></h2>
-  <p style="color:var(--muted);max-width:460px;margin:0 auto;line-height:1.75;font-size:.93rem">
-    Looking for roles in penetration testing, ethical hacking, and IAM.<br>
-    Hyderabad, India &nbsp;·&nbsp; UK &nbsp;·&nbsp; Remote
+  <p style="color:var(--muted);max-width:440px;margin:.5rem auto 0;line-height:1.8;font-size:.9rem">
+    Penetration Testing · VAPT · GRC · SailPoint IAM<br>
+    Hyderabad, India &nbsp;·&nbsp; Remote India
   </p>
   <div class="contact-links">
-    <a href="mailto:gopalboddapati18@gmail.com" class="contact-link">✉ gopalboddapati18@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#91f6fee1f0fdf3fef5f5f0e1f0e5f8a0a9d1f6fcf0f8fdbff2fefc" class="contact-link">✉ <span class="__cf_email__" data-cfemail="ddbab2adbcb1bfb2b9b9bcadbca9b4ece59dbab0bcb4b1f3beb2b0">[email&#160;protected]</span></a>
     <a href="https://www.linkedin.com/in/gopal18/" class="contact-link" target="_blank">in LinkedIn</a>
     <a href="https://github.com/gbvsp" class="contact-link" target="_blank">⌥ GitHub</a>
     <a href="https://gbvsp.github.io/sailpoint-portfolio" class="contact-link" target="_blank">🏛️ IAM Portfolio</a>
@@ -506,15 +651,10 @@
   <p>Gopal Boddapati · <span>Ethical Hacking Portfolio</span> · MSc Cybersecurity · University of Hertfordshire</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+  
+
+
+    
+  
